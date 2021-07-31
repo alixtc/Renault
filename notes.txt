@@ -1,0 +1,9 @@
+Unreadables caractères between 10_587_000 10_590_000
+
+Skip lines 10 588 995 - 10 589 090
+
+# Last good line before corrupted
+sed -n '10588993p' df_ropit.csv   
+
+# End of corrupted lines non included first good line for tail
+sed -n '10589041p' df_ropit.csv 
