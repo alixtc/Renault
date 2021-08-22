@@ -7,3 +7,5 @@ sed -n '10588993p' df_ropit.csv
 
 # End of corrupted lines non included first good line for tail
 sed -n '10589041p' df_ropit.csv 
+
+#question to ask

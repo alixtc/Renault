@@ -29,21 +29,21 @@ def plot_selective_fluid(df, pji_numer, fluid, measure):
     return sns.scatterplot(data=temp, x='index', y='dataValue')
 
 
-def plot_fluids(df, x, y):
+def plot_fluids(df, x, y, **kwargs):
     """Plot a scatter plot for x and y;
     with separate suplots for each fluid"""
     
     fig, ax = plt.subplots(1, 3, figsize= (14, 5))
     temp = df[df['fluid'] ==  'FRFluid']
-    sns.scatterplot(data=temp, x=x, y=y, ax=ax[0], color='g')
+    sns.scatterplot(data=temp, x=x, y=y, ax=ax[0], color='g', **kwargs)
     ax[0].set_title('FRFluid')
 
     temp = df[df['fluid'] == 'HFOFluid']
-    sns.scatterplot(data=temp, x=x, y=y,  ax=ax[1], color='b')
+    sns.scatterplot(data=temp, x=x, y=y,  ax=ax[1], color='b', **kwargs)
     ax[1].set_title('HFOFluid')
 
     temp = df[df['fluid'] == 'RMFluid']
-    sns.scatterplot(data=temp, x=x, y=y,  ax=ax[2], color='r')
+    sns.scatterplot(data=temp, x=x, y=y,  ax=ax[2], color='r', **kwargs)
     ax[2].set_title('RMFluid')
     
     return fig, ax
