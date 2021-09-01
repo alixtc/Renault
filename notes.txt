@@ -9,3 +9,5 @@ sed -n '10588993p' df_ropit.csv
 sed -n '10589041p' df_ropit.csv 
 
 #question to ask
+
+Trop conservateur de considérer comme incorrect les véhicules pour lesquels il manque la phase de remplissage ?
