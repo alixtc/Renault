@@ -11,3 +11,7 @@ sed -n '10589041p' df_ropit.csv
 #question to ask
 
 Trop conservateur de considérer comme incorrect les véhicules pour lesquels il manque la phase de remplissage ?
+
+Rule of thumbs for failure rates on the machine ?
+
+Qu'est ce qu'il se passe quand pour un type de véhicule donné tous les fluides ne sont pas remplis ?
