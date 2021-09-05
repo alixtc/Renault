@@ -15,3 +15,5 @@ Trop conservateur de considérer comme incorrect les véhicules pour lesquels il
 Rule of thumbs for failure rates on the machine ?
 
 Qu'est ce qu'il se passe quand pour un type de véhicule donné tous les fluides ne sont pas remplis ?
+
+Est-ce que l'analyse est faite online ou offline ?

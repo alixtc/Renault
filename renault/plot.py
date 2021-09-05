@@ -5,12 +5,13 @@ import matplotlib.pyplot as plt
 def plot_all_fluid(ropit, pji_number):
     """Given pandas Ropit dataframe, and a vehicule number, 
     plot curves for all available fluids"""
-    df = ropit[ropit.pji == pji_number]
-    df.reset_index(drop= True, inplace=True)
-    df.reset_index(inplace=True)
+    selected_vehicule = ropit[ropit.pji == pji_number].copy()
+    selected_vehicule.reset_index(drop= True, inplace=True)
+    selected_vehicule.reset_index(inplace=True)
+    selected_vehicule['tp'] = selected_vehicule.groupby('fluid').cumcount()+1
 
-    g = sns.FacetGrid(data=df, col='fluid', hue='measurement')
-    g.map_dataframe(sns.scatterplot, x='index', y='dataValue')
+    g = sns.FacetGrid(data=selected_vehicule, col='fluid', hue='measurement')
+    g.map_dataframe(sns.scatterplot, x='tp', y='dataValue')
     g.set_xlabels('Timepoints')
     g.set_ylabels('Measurement value')
     g.add_legend()
