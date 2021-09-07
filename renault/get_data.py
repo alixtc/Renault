@@ -21,26 +21,25 @@ def get_most_important_types(df, n_cars=10):
     return top_cars
 
 
-def get_pji_with_misssing_fluids_measure(input_df):
+def get_pji_with_misssing_fluids_measure(input_df, n_fluids=3, n_measure=3):
     """Returns only pji with less than 3 fluids and 3 measurements 
     for automatic recall"""
     # pji of vehicules with missing fluid
     vehicules_without_3_fluids = input_df.groupby('pji')[['fluid']]\
-    .agg('nunique')\
-    .query('fluid < 3')\
-    .index
+    .agg('nunique')
+    vehicules_without_3_fluids = vehicules_without_3_fluids[vehicules_without_3_fluids['fluid'] < n_fluids].index
     bad_pji = list(vehicules_without_3_fluids)
     
     # Removes vehicules with missing fluids
     filtered_vehicules = input_df[~input_df.pji.isin(bad_pji)]
 
     # PJI of vehicules with missing mesurements
-    vehicules_without_3_measures = filtered_vehicules\
+    temp = filtered_vehicules\
     .groupby(['pji', 'fluid'])[['measurement']]\
     .agg('nunique')\
-    .reset_index()\
-    .query('measurement < 3')\
-    ['pji'].unique()
+    .reset_index()
+    temp = temp[temp['measurement'] < n_measure]
+    vehicules_without_3_measures = temp['pji'].unique()
     
     bad_pji.extend(list(vehicules_without_3_measures))
     return bad_pji
