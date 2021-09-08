@@ -1,8 +1,8 @@
 from renault.get_data import get_pji_with_misssing_fluids_measure
 import pandas as pd
+import numpy as np
 
-
-def date_time_reshaping(input_df):
+def datetime_reshaping(input_df):
     """Converts sourceTimestamp to datetime for train and test df"""
     # conversion of string to datetime
     time = pd.to_datetime(input_df.sourceTimestamp, infer_datetime_format=True)
@@ -13,7 +13,7 @@ def date_time_reshaping(input_df):
     reshaped_df = input_df.sort_values(['fluid', 'measurement', 'time'])
     delta = reshaped_df.groupby(['pji', 'fluid', 'measurement'])['time'].diff()
     delta = delta.fillna(pd.Timedelta(seconds=0))
-    delta = delta / np.timedelta64(1, 's')
+    delta = delta / np.timedelta64(1, 's') #transform time∆ in seconds (float)
     reshaped_df['delta'] = delta.values
     reshaped_df
     
