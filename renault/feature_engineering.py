@@ -3,9 +3,9 @@ import pandas as pd
 
 def feature_engineering(input_df):
     """
-    Input is a dataframe with same number of fluid and measurements per PJI
+    Input is a dataframe with same number of fluids and measurements per PJI
     
-    Returns: Observations are PJI in index columns are the differents features 
+    Returns: Observations are PJI in index, columns are the differents features 
     regrouped by fluids and meaasurements
     """
     
