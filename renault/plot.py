@@ -35,16 +35,19 @@ def plot_fluids(df, x, y, **kwargs):
     with separate suplots for each fluid"""
     
     fig, ax = plt.subplots(1, 3, figsize= (14, 5))
-    temp = df[df['fluid'] ==  'FRFluid']
+    temp = df[df['fluid'] == 'FRFluid']
     sns.scatterplot(data=temp, x=x, y=y, ax=ax[0], color='g', **kwargs)
     ax[0].set_title('FRFluid')
+    ax[0].set_xlabel('Timepoints')
 
     temp = df[df['fluid'] == 'HFOFluid']
     sns.scatterplot(data=temp, x=x, y=y,  ax=ax[1], color='b', **kwargs)
     ax[1].set_title('HFOFluid')
+    ax[1].set_xlabel('Timepoints')
 
     temp = df[df['fluid'] == 'RMFluid']
     sns.scatterplot(data=temp, x=x, y=y,  ax=ax[2], color='r', **kwargs)
     ax[2].set_title('RMFluid')
+    ax[2].set_xlabel('Timepoints')
     
     return fig, ax
